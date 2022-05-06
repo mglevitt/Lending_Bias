@@ -14572,72 +14572,17 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
     </script>
     <!-- End of mathjax configuration --></head>
 <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[3]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="c1">#import altair as alt</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
-</pre></div>
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs jp-mod-noInput ">
 
-     </div>
-</div>
-</div>
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[29]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">important_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;respondent_id&#39;</span><span class="p">,</span> <span class="s1">&#39;agency_abbr&#39;</span><span class="p">,</span> <span class="s1">&#39;loan_type_name&#39;</span><span class="p">,</span> <span class="s1">&#39;property_type_name&#39;</span><span class="p">,</span>
-       <span class="s1">&#39;loan_purpose_name&#39;</span><span class="p">,</span> <span class="s1">&#39;owner_occupancy_name&#39;</span><span class="p">,</span> <span class="s1">&#39;loan_amount_000s&#39;</span><span class="p">,</span>
-       <span class="s1">&#39;preapproval_name&#39;</span><span class="p">,</span> <span class="s1">&#39;action_taken_name&#39;</span><span class="p">,</span> <span class="s1">&#39;msamd_name&#39;</span><span class="p">,</span> <span class="s1">&#39;state_abbr&#39;</span><span class="p">,</span>
-       <span class="s1">&#39;county_name&#39;</span><span class="p">,</span> <span class="s1">&#39;census_tract_number&#39;</span><span class="p">,</span> <span class="s1">&#39;applicant_ethnicity_name&#39;</span><span class="p">,</span>
-       <span class="s1">&#39;co_applicant_ethnicity_name&#39;</span><span class="p">,</span> <span class="s1">&#39;applicant_race_name_1&#39;</span><span class="p">,</span>
-       <span class="s1">&#39;applicant_race_name_2&#39;</span><span class="p">,</span> <span class="s1">&#39;applicant_race_name_3&#39;</span><span class="p">,</span>
-       <span class="s1">&#39;applicant_race_name_4&#39;</span><span class="p">,</span> <span class="s1">&#39;applicant_race_name_5&#39;</span><span class="p">,</span>
-       <span class="s1">&#39;co_applicant_race_name_1&#39;</span><span class="p">,</span> <span class="s1">&#39;co_applicant_race_name_2&#39;</span><span class="p">,</span>
-       <span class="s1">&#39;co_applicant_race_name_3&#39;</span><span class="p">,</span> <span class="s1">&#39;co_applicant_race_name_4&#39;</span><span class="p">,</span>
-       <span class="s1">&#39;co_applicant_race_name_5&#39;</span><span class="p">,</span> <span class="s1">&#39;applicant_sex_name&#39;</span><span class="p">,</span>
-       <span class="s1">&#39;co_applicant_sex_name&#39;</span><span class="p">,</span> <span class="s1">&#39;applicant_income_000s&#39;</span><span class="p">,</span> <span class="s1">&#39;purchaser_type_name&#39;</span><span class="p">,</span>
-       <span class="s1">&#39;denial_reason_name_1&#39;</span><span class="p">,</span> <span class="s1">&#39;denial_reason_name_2&#39;</span><span class="p">,</span> <span class="s1">&#39;denial_reason_name_3&#39;</span><span class="p">,</span>
-       <span class="s1">&#39;rate_spread&#39;</span><span class="p">,</span> <span class="s1">&#39;hoepa_status_name&#39;</span><span class="p">,</span> <span class="s1">&#39;lien_status_name&#39;</span><span class="p">,</span> <span class="s1">&#39;population&#39;</span><span class="p">,</span>
-       <span class="s1">&#39;minority_population&#39;</span><span class="p">,</span> <span class="s1">&#39;hud_median_family_income&#39;</span><span class="p">,</span>
-       <span class="s1">&#39;tract_to_msamd_income&#39;</span><span class="p">,</span> <span class="s1">&#39;number_of_owner_occupied_units&#39;</span><span class="p">,</span>
-       <span class="s1">&#39;number_of_1_to_4_family_units&#39;</span><span class="p">]</span>
-<span class="n">df_2017</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/hmda_2017_nationwide_all-records_labels.csv&#39;</span><span class="p">,</span><span class="n">usecols</span> <span class="o">=</span> <span class="n">important_cols</span><span class="p">,</span><span class="n">nrows</span> <span class="o">=</span> <span class="mi">10000</span><span class="p">)</span>
-<span class="n">df_2017</span><span class="p">[</span><span class="s1">&#39;denied&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_2017</span><span class="p">[[</span><span class="s1">&#39;denial_reason_name_1&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">applymap</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span> <span class="p">:</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">x</span><span class="o">==</span><span class="n">x</span> <span class="k">else</span> <span class="mi">0</span><span class="p">)</span>
-<span class="n">df_2017</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell  jp-mod-noInput ">
 
 <div class="jp-Cell-outputWrapper">
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
 
-
 <div class="jp-OutputArea jp-Cell-outputArea">
 
 <div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
 <pre>C:\Users\maxym\anaconda3\lib\site-packages\IPython\core\interactiveshell.py:3071: DtypeWarning: Columns (44,46,48) have mixed types.Specify dtype option on import or set low_memory=False.
@@ -14648,9 +14593,193 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 
 <div class="jp-OutputArea-child">
 
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[29]:</div>
 
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>respondent_id</th>
+      <th>agency_abbr</th>
+      <th>loan_type_name</th>
+      <th>property_type_name</th>
+      <th>loan_purpose_name</th>
+      <th>owner_occupancy_name</th>
+      <th>loan_amount_000s</th>
+      <th>preapproval_name</th>
+      <th>action_taken_name</th>
+      <th>msamd_name</th>
+      <th>...</th>
+      <th>rate_spread</th>
+      <th>hoepa_status_name</th>
+      <th>lien_status_name</th>
+      <th>population</th>
+      <th>minority_population</th>
+      <th>hud_median_family_income</th>
+      <th>tract_to_msamd_income</th>
+      <th>number_of_owner_occupied_units</th>
+      <th>number_of_1_to_4_family_units</th>
+      <th>denied</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>75-2921540</td>
+      <td>HUD</td>
+      <td>Conventional</td>
+      <td>One-to-four family dwelling (other than manufa...</td>
+      <td>Refinancing</td>
+      <td>Owner-occupied as a principal dwelling</td>
+      <td>53.0</td>
+      <td>Not applicable</td>
+      <td>Application withdrawn by applicant</td>
+      <td>Philadelphia - PA</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>Not a HOEPA loan</td>
+      <td>Secured by a first lien</td>
+      <td>3202.0</td>
+      <td>97.279999</td>
+      <td>57400.0</td>
+      <td>47.540001</td>
+      <td>710.0</td>
+      <td>1314.0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0000504713</td>
+      <td>CFPB</td>
+      <td>Conventional</td>
+      <td>One-to-four family dwelling (other than manufa...</td>
+      <td>Refinancing</td>
+      <td>Owner-occupied as a principal dwelling</td>
+      <td>168.0</td>
+      <td>Not applicable</td>
+      <td>Application denied by financial institution</td>
+      <td>Spokane, Spokane Valley - WA</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>Not a HOEPA loan</td>
+      <td>Secured by a first lien</td>
+      <td>3733.0</td>
+      <td>4.580000</td>
+      <td>63900.0</td>
+      <td>86.239998</td>
+      <td>861.0</td>
+      <td>1241.0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>7810600004</td>
+      <td>HUD</td>
+      <td>Conventional</td>
+      <td>One-to-four family dwelling (other than manufa...</td>
+      <td>Refinancing</td>
+      <td>Owner-occupied as a principal dwelling</td>
+      <td>103.0</td>
+      <td>Not applicable</td>
+      <td>File closed for incompleteness</td>
+      <td>Salt Lake City - UT</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>Not a HOEPA loan</td>
+      <td>Secured by a first lien</td>
+      <td>5498.0</td>
+      <td>37.919998</td>
+      <td>75400.0</td>
+      <td>63.939999</td>
+      <td>1270.0</td>
+      <td>1658.0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>42-1739728</td>
+      <td>HUD</td>
+      <td>Conventional</td>
+      <td>One-to-four family dwelling (other than manufa...</td>
+      <td>Refinancing</td>
+      <td>Not owner-occupied as a principal dwelling</td>
+      <td>88.0</td>
+      <td>Not applicable</td>
+      <td>Loan originated</td>
+      <td>Springfield - MO</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>Not a HOEPA loan</td>
+      <td>Secured by a first lien</td>
+      <td>3566.0</td>
+      <td>11.830000</td>
+      <td>55200.0</td>
+      <td>74.290001</td>
+      <td>573.0</td>
+      <td>1261.0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>42-1739728</td>
+      <td>HUD</td>
+      <td>Conventional</td>
+      <td>One-to-four family dwelling (other than manufa...</td>
+      <td>Refinancing</td>
+      <td>Owner-occupied as a principal dwelling</td>
+      <td>90.0</td>
+      <td>Not applicable</td>
+      <td>Application withdrawn by applicant</td>
+      <td>Chicago, Naperville, Arlington Heights - IL</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>Not a HOEPA loan</td>
+      <td>Secured by a first lien</td>
+      <td>2910.0</td>
+      <td>48.660000</td>
+      <td>77500.0</td>
+      <td>79.250000</td>
+      <td>599.0</td>
+      <td>26.0</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 42 columns</p>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs jp-mod-noInput ">
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell  jp-mod-noInput ">
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
 
 
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
@@ -14828,257 +14957,15 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 
 </div>
 
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[15]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_2017</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;sample_data/sample_2017.csv&#39;</span><span class="p">)</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[4]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_2017</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;sample_data/sample_2017.csv&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Unnamed: 0&#39;</span><span class="p">])</span>
-<span class="n">df_2017</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell  jp-mod-noInput ">
 
 <div class="jp-Cell-outputWrapper">
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
 
-
 <div class="jp-OutputArea jp-Cell-outputArea">
 
 <div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[4]:</div>
-
-
-
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>respondent_id</th>
-      <th>agency_abbr</th>
-      <th>loan_type_name</th>
-      <th>property_type_name</th>
-      <th>loan_purpose_name</th>
-      <th>owner_occupancy_name</th>
-      <th>loan_amount_000s</th>
-      <th>preapproval_name</th>
-      <th>action_taken_name</th>
-      <th>msamd_name</th>
-      <th>...</th>
-      <th>rate_spread</th>
-      <th>hoepa_status_name</th>
-      <th>lien_status_name</th>
-      <th>population</th>
-      <th>minority_population</th>
-      <th>hud_median_family_income</th>
-      <th>tract_to_msamd_income</th>
-      <th>number_of_owner_occupied_units</th>
-      <th>number_of_1_to_4_family_units</th>
-      <th>denied</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>75-2921540</td>
-      <td>HUD</td>
-      <td>Conventional</td>
-      <td>One-to-four family dwelling (other than manufa...</td>
-      <td>Refinancing</td>
-      <td>Owner-occupied as a principal dwelling</td>
-      <td>53.0</td>
-      <td>Not applicable</td>
-      <td>Application withdrawn by applicant</td>
-      <td>Philadelphia - PA</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>Not a HOEPA loan</td>
-      <td>Secured by a first lien</td>
-      <td>3202.0</td>
-      <td>97.279999</td>
-      <td>57400.0</td>
-      <td>47.540001</td>
-      <td>710.0</td>
-      <td>1314.0</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>0000504713</td>
-      <td>CFPB</td>
-      <td>Conventional</td>
-      <td>One-to-four family dwelling (other than manufa...</td>
-      <td>Refinancing</td>
-      <td>Owner-occupied as a principal dwelling</td>
-      <td>168.0</td>
-      <td>Not applicable</td>
-      <td>Application denied by financial institution</td>
-      <td>Spokane, Spokane Valley - WA</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>Not a HOEPA loan</td>
-      <td>Secured by a first lien</td>
-      <td>3733.0</td>
-      <td>4.580000</td>
-      <td>63900.0</td>
-      <td>86.239998</td>
-      <td>861.0</td>
-      <td>1241.0</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>7810600004</td>
-      <td>HUD</td>
-      <td>Conventional</td>
-      <td>One-to-four family dwelling (other than manufa...</td>
-      <td>Refinancing</td>
-      <td>Owner-occupied as a principal dwelling</td>
-      <td>103.0</td>
-      <td>Not applicable</td>
-      <td>File closed for incompleteness</td>
-      <td>Salt Lake City - UT</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>Not a HOEPA loan</td>
-      <td>Secured by a first lien</td>
-      <td>5498.0</td>
-      <td>37.919998</td>
-      <td>75400.0</td>
-      <td>63.939999</td>
-      <td>1270.0</td>
-      <td>1658.0</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>42-1739728</td>
-      <td>HUD</td>
-      <td>Conventional</td>
-      <td>One-to-four family dwelling (other than manufa...</td>
-      <td>Refinancing</td>
-      <td>Not owner-occupied as a principal dwelling</td>
-      <td>88.0</td>
-      <td>Not applicable</td>
-      <td>Loan originated</td>
-      <td>Springfield - MO</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>Not a HOEPA loan</td>
-      <td>Secured by a first lien</td>
-      <td>3566.0</td>
-      <td>11.830000</td>
-      <td>55200.0</td>
-      <td>74.290001</td>
-      <td>573.0</td>
-      <td>1261.0</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>42-1739728</td>
-      <td>HUD</td>
-      <td>Conventional</td>
-      <td>One-to-four family dwelling (other than manufa...</td>
-      <td>Refinancing</td>
-      <td>Owner-occupied as a principal dwelling</td>
-      <td>90.0</td>
-      <td>Not applicable</td>
-      <td>Application withdrawn by applicant</td>
-      <td>Chicago, Naperville, Arlington Heights - IL</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>Not a HOEPA loan</td>
-      <td>Secured by a first lien</td>
-      <td>2910.0</td>
-      <td>48.660000</td>
-      <td>77500.0</td>
-      <td>79.250000</td>
-      <td>599.0</td>
-      <td>26.0</td>
-      <td>0</td>
-    </tr>
-  </tbody>
-</table>
-<p>5 rows × 42 columns</p>
-</div>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[30]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Summary of all quantitative fields</span>
-<span class="n">df_2017</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[30]:</div>
-
 
 
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
@@ -15237,35 +15124,15 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 
 </div>
 
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[31]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Null values for every field</span>
-<span class="n">df_2017</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell  jp-mod-noInput ">
 
 <div class="jp-Cell-outputWrapper">
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
 
-
 <div class="jp-OutputArea jp-Cell-outputArea">
 
 <div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[31]:</div>
-
 
 
 
@@ -15321,37 +15188,15 @@ dtype: int64</pre>
 
 </div>
 
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[32]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Plot Value Counts of Race</span>
-<span class="n">prop_race</span> <span class="o">=</span> <span class="p">(</span><span class="n">df_2017</span><span class="p">[</span><span class="s1">&#39;applicant_race_name_1&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span> <span class="o">/</span> <span class="n">df_2017</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">sort_values</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">prop_race</span><span class="p">)</span>
-<span class="n">prop_race</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span> <span class="o">=</span> <span class="s1">&#39;barh&#39;</span><span class="p">,</span><span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;Count of Each Race&#39;</span><span class="p">)</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell  jp-mod-noInput ">
 
 <div class="jp-Cell-outputWrapper">
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
 
-
 <div class="jp-OutputArea jp-Cell-outputArea">
 
 <div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
 <pre>Native Hawaiian or Other Pacific Islander                                            0.0066
@@ -15368,10 +15213,6 @@ Name: applicant_race_name_1, dtype: float64
 
 <div class="jp-OutputArea-child">
 
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[32]:</div>
-
-
 
 
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
@@ -15381,10 +15222,6 @@ Name: applicant_race_name_1, dtype: float64
 </div>
 
 <div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
 
 
 
@@ -15402,37 +15239,15 @@ jp-needs-light-background
 
 </div>
 
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[33]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Plot mean denial by race</span>
-<span class="n">mean_denial_by_race</span> <span class="o">=</span> <span class="n">df_2017</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;applicant_race_name_1&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">mean</span><span class="p">()[</span><span class="s1">&#39;denied&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">mean_denial_by_race</span><span class="p">)</span>
-<span class="n">mean_denial_by_race</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;barh&#39;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Rate of Denial by Race&#39;</span><span class="p">)</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell  jp-mod-noInput ">
 
 <div class="jp-Cell-outputWrapper">
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
 
-
 <div class="jp-OutputArea jp-Cell-outputArea">
 
 <div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
 <pre>applicant_race_name_1
@@ -15450,10 +15265,6 @@ Name: denied, dtype: float64
 
 <div class="jp-OutputArea-child">
 
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[33]:</div>
-
-
 
 
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
@@ -15463,10 +15274,6 @@ Name: denied, dtype: float64
 </div>
 
 <div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
 
 
 
@@ -15484,37 +15291,15 @@ jp-needs-light-background
 
 </div>
 
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[34]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Plot count of each ethnicity</span>
-<span class="n">prop_ethnicity</span> <span class="o">=</span> <span class="p">(</span><span class="n">df_2017</span><span class="p">[</span><span class="s1">&#39;applicant_ethnicity_name&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span> <span class="o">/</span> <span class="n">df_2017</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">sort_values</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">prop_ethnicity</span><span class="p">)</span>
-<span class="n">prop_ethnicity</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span> <span class="o">=</span> <span class="s1">&#39;barh&#39;</span><span class="p">,</span><span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;Count of Each Ethnicity&#39;</span><span class="p">)</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell  jp-mod-noInput ">
 
 <div class="jp-Cell-outputWrapper">
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
 
-
 <div class="jp-OutputArea jp-Cell-outputArea">
 
 <div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
 <pre>Not applicable                                                                       0.0596
@@ -15528,10 +15313,6 @@ Name: applicant_ethnicity_name, dtype: float64
 
 <div class="jp-OutputArea-child">
 
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[34]:</div>
-
-
 
 
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
@@ -15541,10 +15322,6 @@ Name: applicant_ethnicity_name, dtype: float64
 </div>
 
 <div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
 
 
 
@@ -15562,37 +15339,15 @@ jp-needs-light-background
 
 </div>
 
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[35]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Plot mean denial by ethnicicity</span>
-<span class="n">denial_rate_by_ethnicity</span> <span class="o">=</span> <span class="n">df_2017</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;applicant_ethnicity_name&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">mean</span><span class="p">()[</span><span class="s1">&#39;denied&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">denial_rate_by_ethnicity</span><span class="p">)</span>
-<span class="n">denial_rate_by_ethnicity</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;barh&#39;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Rate of Denial by Ethnicity&#39;</span><span class="p">)</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell  jp-mod-noInput ">
 
 <div class="jp-Cell-outputWrapper">
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
 
-
 <div class="jp-OutputArea jp-Cell-outputArea">
 
 <div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
 <pre>applicant_ethnicity_name
@@ -15607,10 +15362,6 @@ Name: denied, dtype: float64
 
 <div class="jp-OutputArea-child">
 
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[35]:</div>
-
-
 
 
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
@@ -15620,10 +15371,6 @@ Name: denied, dtype: float64
 </div>
 
 <div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
 
 
 
@@ -15641,37 +15388,15 @@ jp-needs-light-background
 
 </div>
 
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[36]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Plot amount of each type of loan in data</span>
-<span class="n">loan_prop</span> <span class="o">=</span> <span class="p">(</span><span class="n">df_2017</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;loan_type_name&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">size</span><span class="p">()</span> <span class="o">/</span> <span class="n">df_2017</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">sort_values</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">loan_prop</span><span class="p">)</span>
-<span class="n">loan_prop</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span> <span class="o">=</span> <span class="s1">&#39;barh&#39;</span><span class="p">,</span><span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;Type of Loans in Data&#39;</span><span class="p">)</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell  jp-mod-noInput ">
 
 <div class="jp-Cell-outputWrapper">
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
 
-
 <div class="jp-OutputArea jp-Cell-outputArea">
 
 <div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
 <pre>loan_type_name
@@ -15686,10 +15411,6 @@ dtype: float64
 
 <div class="jp-OutputArea-child">
 
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[36]:</div>
-
-
 
 
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
@@ -15699,10 +15420,6 @@ dtype: float64
 </div>
 
 <div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
 
 
 
@@ -15720,37 +15437,15 @@ jp-needs-light-background
 
 </div>
 
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[37]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Visualize correlation in Quantatative data</span>
-<span class="n">corrmat</span> <span class="o">=</span> <span class="n">df_2017</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
-<span class="n">f</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">corrmat</span><span class="p">,</span> <span class="n">square</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell  jp-mod-noInput ">
 
 <div class="jp-Cell-outputWrapper">
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
 
-
 <div class="jp-OutputArea jp-Cell-outputArea">
 
 <div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[37]:</div>
-
 
 
 
@@ -15761,10 +15456,6 @@ jp-needs-light-background
 </div>
 
 <div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
 
 
 
@@ -15787,8 +15478,7 @@ jp-needs-light-background
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h1 id="PARAGRAPH-NOTES">PARAGRAPH NOTES<a class="anchor-link" href="#PARAGRAPH-NOTES">&#182;</a></h1><p>For our project, we have decided to extract HDMA data from the consumer financial protection bureau on all records from 2017. In the future of our project, we may expand to include previous years, however, this data itself includes over 14 million observations and requires a lot of time to run and process, so including a range of data will be completed towards the end of the project, if decided. Additionally, we "randomly" select 10,000 rows for our analysis to save space/time, but will expand this to include all of the data after our code is complete.</p>
 <p>We have decided to focus on loan denial based on race and ethnicity, so we did some feature engineering to drop useless columns and create a binary column on a loan being denied/accepted. Additionally, there are several race columns, but the 2 through 5th listing had a majority of null values, so we decided to only use the first entry as the race of the individual. Since we are focusing on race, its important to note that the distribution in the data contains 64% White applicants, 11% Not provided, 10.5% Not applicable, and 13% part of a minority group. This distribution is poor, and raises other questions with the data collection that is useful for the project. However, it is still a good source for our project. For example, the mean denial rate for a white applicant [with all of the data] is .095, while the mean denial rate for an african american applicant is .174. This is a pretty drastic change, and is shown in a simple bar plot.</p>
 <p>We are also focusing on loan denial based on Ethnicity, so we did some exploration into the distribution of this feature. For Ethnicity we also had an undeven distribution like race with 59% not hispanic, 25% no information provided, 10% hispanic, and 6% not applicable. With this distribution we are questioning whether to consider ethnicity, since a lot more information is not included than the amount of hispanics in the data which could skew are results. We also had less difference between the denial rate for hispanic and not hispanic compared to the differences found in race as a result of minority groups also being present in the not hispanic group. Overall, we will likely focus our study mainly on Race but we will also consider ethnicity as another attribute since we will be able to run similar code for analysis based on race and ethnicity.</p>
@@ -15802,8 +15492,7 @@ jp-needs-light-background
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 
 </div>
 </div>
